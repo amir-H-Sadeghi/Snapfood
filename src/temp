@@ -1,0 +1,68 @@
+
+    //
+
+    //
+    public static void AdminRegister(Scanner scanner){
+        boolean condition=true;//
+        do {
+            System.out.println("0-Back");
+            System.out.println("Enter your username");
+            String UserName = scanner.nextLine();
+            try {
+                int notImportant = Integer.parseInt(UserName);
+                if(notImportant==0)
+                    ChooseRole(scanner,false);
+                else if(notImportant==-99)
+                    System.exit(0);
+            }catch (Exception e){}
+            System.out.println("Enter your password");
+            String Password = scanner.nextLine();
+            if (condition/*!AdminSearch(UserName).equals(NULL)*/) {
+                System.out.println("A account with the given username and password exists");
+            } else {
+                AdminIdCounter++;
+                Admin A = new Admin(UserName, Password, AdminIdCounter);
+                System.out.println("Account registered successfully");
+                //SQL Add
+                AdminRestaurantMenu(scanner, A);
+            }
+
+        }while (true);
+    }
+    //
+    public static void UserRegister(Scanner scanner){
+        boolean condition=true;//
+        do {
+            System.out.println("0-Back");
+            System.out.println("Enter your username");
+            String UserName = scanner.nextLine();
+            try {
+                int notImportant = Integer.parseInt(UserName);
+                if(notImportant==0)
+                    ChooseRole(scanner,false);
+                else if(notImportant==-99)
+                    System.exit(0);
+            }catch (Exception e){}
+            System.out.println("Enter your password");
+            String Password = scanner.nextLine();
+            if (condition/*!UserSearch(UserName).equals(NULL)*/) {
+                System.out.println("A account with the given username and password exists");
+            } else {
+                UserIdCounter++;
+                User A = new User(UserName, Password, UserIdCounter);
+                //SQL Add
+                System.out.println("Account registered successfully");
+                UserRestaurantMenu(scanner, A);
+            }
+        }while (true);
+    }
+
+
+    public static void UserRestaurantMenu(Scanner scanner,User user){
+
+    }
+
+
+
+
+}
